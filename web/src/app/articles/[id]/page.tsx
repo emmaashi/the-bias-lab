@@ -5,17 +5,9 @@ import { Highlights } from "@/components/Highlights";
 
 export const dynamic = "force-dynamic";
 
-export default async function ArticlePage(props: { params: Promise<{ id: string }> }) {
-  const { id } = await props.params;
-  let article;
-  try {
-    article = await fetchArticle(id);
-  } catch {
-    return (
-      <main className="min-h-dvh bg-background text-foreground"><div className="mx-auto max-w-5xl px-6 md:px-10 py-12">Not found</div></main>
-    );
-  }
-
+export default async function ArticlePage({ params }: { params: { id: string } }) {
+  const { id } = params;
+  const article = await fetchArticle(id);
   return (
     <main className="min-h-dvh bg-background text-foreground">
       <div className="mx-auto max-w-5xl px-6 md:px-10 py-12 md:py-16">
