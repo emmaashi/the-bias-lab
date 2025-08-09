@@ -1,21 +1,22 @@
 import Link from "next/link";
 import { narratives, articles } from "@/data/mock";
 import { RadarChart } from "@/components/RadarChart";
+import type { BiasScores } from "@/types";
 
 export const dynamic = "force-dynamic";
 
-function averageScores(ids: string[]) {
+function averageScores(ids: string[]): BiasScores {
   const picked = articles.filter((a) => ids.includes(a.id));
-  const sum = { ideology: 0, factual: 0, framing: 0, emotion: 0, transparency: 0 } as const;
-  const acc: any = { ...sum };
+  const zero: BiasScores = { ideology: 0, factual: 0, framing: 0, emotion: 0, transparency: 0 };
+  const acc: BiasScores = { ...zero };
   picked.forEach((a) => {
-    for (const k of Object.keys(a.scores) as Array<keyof typeof acc>) {
+    for (const k of Object.keys(acc) as Array<keyof BiasScores>) {
       acc[k] += a.scores[k];
     }
   });
   const n = Math.max(1, picked.length);
-  for (const k of Object.keys(acc) as Array<keyof typeof acc>) acc[k] = Math.round(acc[k] / n);
-  return acc as typeof acc;
+  for (const k of Object.keys(acc) as Array<keyof BiasScores>) acc[k] = Math.round(acc[k] / n);
+  return acc;
 }
 
 export default async function NarrativeDetail({ params }: { params: Promise<{ id: string }> }) {
@@ -86,15 +87,18 @@ export default async function NarrativeDetail({ params }: { params: Promise<{ id
             <h2 className="text-sm font-semibold tracking-tight">Average bias profile</h2>
             <div className="mt-1"><RadarChart scores={avg} /></div>
             <ul className="mt-1 w-full max-w-[280px] mx-auto space-y-2 text-sm">
-              {Object.entries(avg).map(([k, v]) => (
-                <li key={k} className="flex items-center gap-3">
-                  <span className="capitalize w-28 text-foreground/70">{k}</span>
-                  <div className="h-1.5 flex-1 rounded-full bg-foreground/10">
-                    <div className="h-1.5 rounded-full bg-foreground/60" style={{ width: `${v}%` }} />
-                  </div>
-                  <span className="w-10 text-right tabular-nums">{v}</span>
-                </li>
-              ))}
+              {(Object.keys(avg) as Array<keyof BiasScores>).map((k) => {
+                const v = avg[k];
+                return (
+                  <li key={k} className="flex items-center gap-3">
+                    <span className="capitalize w-28 text-foreground/70">{k}</span>
+                    <div className="h-1.5 flex-1 rounded-full bg-foreground/10">
+                      <div className="h-1.5 rounded-full bg-foreground/60" style={{ width: `${v}%` }} />
+                    </div>
+                    <span className="w-10 text-right tabular-nums">{v}</span>
+                  </li>
+                );
+              })}
             </ul>
           </aside>
         </section>
