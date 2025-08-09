@@ -1,17 +1,17 @@
 from __future__ import annotations
 from typing import Dict, List, Literal, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 BiasDimension = Literal["ideology", "factual", "framing", "emotion", "transparency"]
 
 
 class BiasScores(BaseModel):
-    ideology: int
-    factual: int
-    framing: int
-    emotion: int
-    transparency: int
+    ideology: int = Field(ge=0, le=100)
+    factual: int = Field(ge=0, le=100)
+    framing: int = Field(ge=0, le=100)
+    emotion: int = Field(ge=0, le=100)
+    transparency: int = Field(ge=0, le=100)
 
 
 class HighlightSpan(BaseModel):

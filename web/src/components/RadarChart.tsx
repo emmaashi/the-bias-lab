@@ -27,7 +27,7 @@ export function RadarChart({ scores }: { scores: BiasScores }) {
   const gridRings = [0.25, 0.5, 0.75, 1];
 
   return (
-    <div className="inline-block">
+    <div className="block mx-auto">
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         <g>
           {gridRings.map((r) => (
