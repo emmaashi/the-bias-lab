@@ -35,9 +35,14 @@ export function Highlights({
     .sort((a, b) => a.start - b.start)
     .forEach((span, idx) => {
       if (span.start > cursor) {
-        parts.push(<span key={`t-${cursor}`}>{text.slice(cursor, span.start)}</span>);
+        parts.push(<span key={`t-${cursor}-${idx}`}>{text.slice(cursor, span.start)}</span>);
       }
-      if (!activeDims[span.dimension]) return;
+      if (!activeDims[span.dimension]) {
+        // Render the text as plain when this dimension is toggled off
+        parts.push(<span key={`t-off-${span.start}-${idx}`}>{text.slice(span.start, span.end)}</span>);
+        cursor = span.end;
+        return;
+      }
       const color = colorByDim[span.dimension];
       parts.push(
         <span
@@ -56,7 +61,7 @@ export function Highlights({
       );
       cursor = span.end;
     });
-  if (cursor < text.length) parts.push(<span key={`t-${cursor}`}>{text.slice(cursor)}</span>);
+  if (cursor < text.length) parts.push(<span key={`t-${cursor}-final`}>{text.slice(cursor)}</span>);
 
   return (
     <div className="space-y-4">
