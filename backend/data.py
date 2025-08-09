@@ -1,13 +1,7 @@
 from __future__ import annotations
 from datetime import datetime, timedelta
 from typing import List
-from .models import (
-    BiasScores,
-    ArticleDetail,
-    ArticleSummary,
-    NarrativeCluster,
-    ApiList,
-)
+from models import BiasScores, ArticleDetail, ArticleSummary, NarrativeCluster, ApiList
 
 
 now = datetime.utcnow()
