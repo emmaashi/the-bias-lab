@@ -2,11 +2,12 @@ import Link from "next/link";
 import { fetchArticle } from "@/lib/fetchers";
 import { RadarChart } from "@/components/RadarChart";
 import { Highlights } from "@/components/Highlights";
+import type { BiasScores } from "@/types";
 
 export const dynamic = "force-dynamic";
 
-export default async function ArticlePage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const article = await fetchArticle(id);
   return (
     <main className="min-h-dvh bg-background text-foreground">
@@ -32,8 +33,8 @@ export default async function ArticlePage({ params }: { params: { id: string } }
               <RadarChart scores={article.scores} />
             </div>
             <ul className="mt-4 space-y-2 text-sm">
-              {Object.entries(article.scores).map(([k, v]) => (
-                <li key={k} className="flex justify-between"><span className="capitalize">{k}</span><span>{v}</span></li>
+              {(Object.keys(article.scores) as Array<keyof BiasScores>).map((k) => (
+                <li key={k} className="flex justify-between"><span className="capitalize">{k}</span><span>{article.scores[k]}</span></li>
               ))}
             </ul>
             {article.timeline && (
