@@ -13,11 +13,20 @@ const colorByDim: Record<BiasDimension, string> = {
 export function Highlights({
   text,
   spans,
+  showLegend = true,
 }: {
   text: string;
   spans: HighlightSpan[];
+  showLegend?: boolean;
 }) {
   const [hovered, setHovered] = React.useState<number | null>(null);
+  const [activeDims, setActiveDims] = React.useState<Record<BiasDimension, boolean>>({
+    ideology: true,
+    factual: true,
+    framing: true,
+    emotion: true,
+    transparency: true,
+  });
   const parts: Array<React.ReactNode> = [];
 
   let cursor = 0;
@@ -28,6 +37,7 @@ export function Highlights({
       if (span.start > cursor) {
         parts.push(<span key={`t-${cursor}`}>{text.slice(cursor, span.start)}</span>);
       }
+      if (!activeDims[span.dimension]) return;
       const color = colorByDim[span.dimension];
       parts.push(
         <span
@@ -48,7 +58,26 @@ export function Highlights({
     });
   if (cursor < text.length) parts.push(<span key={`t-${cursor}`}>{text.slice(cursor)}</span>);
 
-  return <p className="leading-relaxed text-foreground/80">{parts}</p>;
+  return (
+    <div className="space-y-4">
+      {showLegend && (
+        <div className="flex flex-wrap gap-3 text-xs">
+          {(Object.keys(colorByDim) as BiasDimension[]).map((dim) => (
+            <button
+              key={dim}
+              onClick={() => setActiveDims((s) => ({ ...s, [dim]: !s[dim] }))}
+              className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-1 ${activeDims[dim] ? "border-foreground/20" : "border-foreground/10 opacity-50"}`}
+              title={`Toggle ${dim}`}
+            >
+              <span className="size-2 rounded-full" style={{ background: colorByDim[dim] }} />
+              <span className="capitalize">{dim}</span>
+            </button>
+          ))}
+        </div>
+      )}
+      <p className="leading-relaxed text-foreground/80">{parts}</p>
+    </div>
+  );
 }
 
 
