@@ -13,9 +13,15 @@ from .models import (
 now = datetime.utcnow()
 
 
+def clamp(v: int) -> int:
+    return max(0, min(100, v))
+
+
 def scores(**kwargs) -> BiasScores:
     base = dict(ideology=50, factual=75, framing=50, emotion=40, transparency=65)
     base.update(kwargs)
+    # Ensure values are 0..100 so the radar chart geometry is correct
+    base = {k: clamp(int(v)) for k, v in base.items()}
     return BiasScores(**base)
 
 
