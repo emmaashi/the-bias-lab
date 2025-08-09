@@ -111,7 +111,7 @@ ARTICLE_SUMMARIES = ApiList(
 NARRATIVES = ApiList(
     items=[
         NarrativeCluster(
-            id="n1",
+            id="1",
             title="Policy vs Markets",
             summary="Debate over whether rate moves cool inflation without harming jobs.",
             keywords=["inflation", "rates", "jobs", "stabilization"],
@@ -121,7 +121,7 @@ NARRATIVES = ApiList(
             sparkline=[20, 28, 33, 45, 52, 49, 61, 66, 62, 58, 63, 72],
         ),
         NarrativeCluster(
-            id="n2",
+            id="2",
             title="Grid Reliability",
             summary="Heatwave pressures aging infrastructure; preparedness questioned.",
             keywords=["grid", "heatwave", "maintenance", "peak"],
@@ -131,7 +131,7 @@ NARRATIVES = ApiList(
             sparkline=[12, 14, 18, 19, 23, 27, 31, 29, 34, 36, 42, 48],
         ),
         NarrativeCluster(
-            id="n3",
+            id="3",
             title="Transit Equity",
             summary="Study highlights uneven access; calls for targeted investment.",
             keywords=["transit", "equity", "access", "investment"],
@@ -141,7 +141,7 @@ NARRATIVES = ApiList(
             sparkline=[10, 11, 13, 17, 18, 20, 23, 22, 25, 27, 29, 35],
         ),
         NarrativeCluster(
-            id="n4",
+            id="4",
             title="Water Policy & Drought",
             summary="Allocation rules face scrutiny as reservoirs fall and consumption rises.",
             keywords=["drought", "reservoirs", "allocation", "consumption"],
@@ -151,7 +151,7 @@ NARRATIVES = ApiList(
             sparkline=[15, 16, 19, 22, 24, 23, 28, 30, 33, 31, 35, 39],
         ),
         NarrativeCluster(
-            id="n5",
+            id="5",
             title="AI in Classrooms",
             summary="Debate over safeguards, benefits, and the future of assessment.",
             keywords=["education", "AI", "assessment", "policy"],
