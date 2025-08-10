@@ -44,21 +44,25 @@ ARTICLES: List[ArticleDetail] = [
     ArticleDetail(
         id="a1",
         title="Federal Policy Shifts Spark Market Debate",
-        outlet="Global Ledger",
-        author="Ava Singh",
+        outlet="The HR Digest",
+        author="Diana Coker",
         publishedAt=(now - timedelta(hours=3)).isoformat(),
-        url="https://www.federalreserve.gov/monetarypolicy.htm",
+        url="https://www.thehrdigest.com/inflation-and-unemployment-does-inflation-make-it-harder-to-get-a-job/",
         scores=scores(ideology=66, factual=82, framing=58, emotion=36, transparency=72),
         content=(
-            "Federal Reserve officials signaled that rates may remain elevated while inflation cools unevenly across sectors. "
-            "Analysts disagreed about the near‑term effect on hiring; some described the posture as prudent stabilization, while others warned it could weigh on investment. "
-            "In public remarks, the administration framed the policy as temporary stabilization tied to incoming data and emphasized transparency in future guidance."
+            "As the nation faces a persistent economic crisis, one question looms large. Does inflation make it harder to get a job? This interesting interplay between inflation and unemployment is a critical issue shaping the American labor market."
+            "From soaring prices to shifting Fed policy on inflation, the impact of inflation on jobs is undeniable. It has left workers and employers alike wading through a tricky job market."
+            "Historically, economists have viewed inflation and unemployment as two sides of the same coin. When one rises, the other tends to fall. This concept, rooted in the Phillips Curve, highlights a trade-off between employment vs inflation."
+            "Today’s inflation data tells a more complex story about the job market in 2025. With inflation shifting, employers face higher operating costs resulting in less hiring. The effect of inflation on hiring is often seen in the form of slower job creation, a tightening of the labor market, and a tough market for job seekers to secure roles. Meanwhile, the Federal Research job strategy, i.e. Raising interest rates to curb inflation will only dampen demand, increasing the effects of inflation on the job market."
+            "Prices for goods and services are now higher than ever. This has eroded purchasing power and forced businesses to adapt in order to survive. This inflation is impacting jobs in many sectors, including tech, where we’ve seen a massive surge in layoffs in 2025. The job market trends reveal a bigger paradox. Despite high inflation, the unemployment rate remains relatively low. So, what does this mean for job safety? The impact on careers due to inflation still varies as companies prioritize cost-cutting above everything else."
         ),
         highlights=make_highlights(
             text=(
-                "Federal Reserve officials signaled that rates may remain elevated while inflation cools unevenly across sectors. "
-                "Analysts disagreed about the near‑term effect on hiring; some described the posture as prudent stabilization, while others warned it could weigh on investment. "
-                "In public remarks, the administration framed the policy as temporary stabilization tied to incoming data and emphasized transparency in future guidance."
+                "As the nation faces a persistent economic crisis, one question looms large. Does inflation make it harder to get a job? This interesting interplay between inflation and unemployment is a critical issue shaping the American labor market."
+                "From soaring prices to shifting Fed policy on inflation, the impact of inflation on jobs is undeniable. It has left workers and employers alike wading through a tricky job market."
+                "Historically, economists have viewed inflation and unemployment as two sides of the same coin. When one rises, the other tends to fall. This concept, rooted in the Phillips Curve, highlights a trade-off between employment vs inflation."
+                "Today’s inflation data tells a more complex story about the job market in 2025. With inflation shifting, employers face higher operating costs resulting in less hiring. The effect of inflation on hiring is often seen in the form of slower job creation, a tightening of the labor market, and a tough market for job seekers to secure roles. Meanwhile, the Federal Research job strategy, i.e. Raising interest rates to curb inflation will only dampen demand, increasing the effects of inflation on the job market."
+                "Prices for goods and services are now higher than ever. This has eroded purchasing power and forced businesses to adapt in order to survive. This inflation is impacting jobs in many sectors, including tech, where we’ve seen a massive surge in layoffs in 2025. The job market trends reveal a bigger paradox. Despite high inflation, the unemployment rate remains relatively low. So, what does this mean for job safety? The impact on careers due to inflation still varies as companies prioritize cost-cutting above everything else."
             ),
             specs=[
                 ("disagreed", "framing", 62, "disagreement"),
