@@ -48,11 +48,7 @@ export default async function Home() {
         </section>
         <footer className="mt-auto py-10 border-t border-foreground/10 text-sm text-foreground/60">
           <div className="flex items-center justify-between">
-            <span>© {new Date().getFullYear()} The Bias Lab</span>
-            <div className="flex items-center gap-4">
-              <Link href="/" className="hover:opacity-70">Home</Link>
-              <a href="https://www.linkedin.com/in/emma-shi/" target="_blank" rel="noopener noreferrer" className="hover:opacity-70">Made by Emma Shi</a>         
-            </div>
+            <span>© {new Date().getFullYear()} Emma Shi</span>
           </div>
         </footer>
       </div>
