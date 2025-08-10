@@ -51,7 +51,7 @@ export default async function Home() {
             <span>© {new Date().getFullYear()} The Bias Lab</span>
             <div className="flex items-center gap-4">
               <Link href="/" className="hover:opacity-70">Home</Link>
-              <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="hover:opacity-70">Next.js</a>
+              <a href="https://www.linkedin.com/in/emma-shi/" target="_blank" rel="noopener noreferrer" className="hover:opacity-70">Made by Emma Shi</a>         
             </div>
           </div>
         </footer>
